@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# SSH configuration file for the local SSH client
+ssh-add ~/.ssh/school
