@@ -1,6 +1,29 @@
 #!/usr/bin/env bash
 # Bash script that configures a new Ubuntu machine to respect above requirements (this script will be run on the server itself)
-sudo apt-get -y update
-sudo apt-get install -y nginx 
-sudo echo "Hello World!" > /var/www/html/index.html
-sudo service nginx start
+# Update package lists
+sudo apt update
+
+# Install Nginx
+sudo apt install -y nginx
+
+# Configure Nginx
+sudo cat <<EOF > /etc/nginx/sites-available/default
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+
+    location = / {
+        return 200 "Hello World!";
+    }
+}
+EOF
+
+# Restart Nginx
+sudo service nginx restart
