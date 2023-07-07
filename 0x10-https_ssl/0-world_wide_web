@@ -14,3 +14,4 @@ do
 	then
 		subdomain_info "$1" "$subdomain"
 	fi
+done
