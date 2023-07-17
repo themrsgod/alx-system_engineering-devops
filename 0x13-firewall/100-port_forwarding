@@ -10,6 +10,8 @@
 
 *nat
 -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+COMMIT
+
 # Don't delete these required lines, otherwise there will be errors
 *filter
 :ufw-before-input - [0:0]
