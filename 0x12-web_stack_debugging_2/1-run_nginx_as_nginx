@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+su nginx -s/bin/bash -c '/etc/init.d/nginx restart'
+
